@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>CyberRAG | Cybersecurity Knowledge Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand"><span class="brand-icon" aria-hidden="true"><span></span></span><span><strong>Cyber<span>RAG</span></strong><small>Security intelligence</small></span></div>
+        <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Close navigation">×</button>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class="nav-item active" href="#chat" data-target="chat"><span class="nav-icon">◈</span>Chat</a>
+          <a class="nav-item" href="#knowledge" data-target="knowledge"><span class="nav-icon">▤</span>Knowledge Base</a>
+          <a class="nav-item" href="#pipeline" data-target="pipeline"><span class="nav-icon">⌁</span>RAG Pipeline</a>
+          <a class="nav-item" href="#status" data-target="status"><span class="nav-icon">◉</span>System Status</a>
+        </nav>
+        <div class="sidebar-footer"><div class="online-label"><span class="status-dot" id="sidebar-status-dot"></span><span id="sidebar-status-text">Checking service</span></div><span class="version">v1.0 / local deployment</span></div>
+      </aside>
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+      <main class="main-content">
+        <header class="topbar"><button class="menu-button" id="menu-button" type="button" aria-label="Open navigation">☰</button><div class="breadcrumb"><span>Workspace</span><span>/</span><strong>Cybersecurity AI Assistant</strong></div><div class="topbar-actions"><span class="secure-label"><span class="lock-icon">◆</span>Private knowledge base</span><span class="header-status" id="header-status"><span class="status-dot"></span>RAG Online</span></div></header>
+        <div class="content-wrap">
+          <section class="intro" id="chat"><div><p class="eyebrow">Cybersecurity intelligence / <span>Ask with confidence</span></p><h1>Cybersecurity <span>AI Assistant</span></h1><p class="intro-copy">Ask questions and retrieve trusted information from your cybersecurity knowledge base.</p></div><div class="intro-mark" aria-hidden="true"><span>+</span><i></i></div></section>
+
+          <section class="chat-card glass-card" aria-label="CyberRAG chat">
+            <div class="chat-card-header"><div class="agent-identity"><span class="agent-avatar">✦</span><div><strong>CyberRAG AI</strong><span>Context-aware security analysis</span></div></div><span class="model-label"><span class="pulse-dot"></span>RAG engine ready</span></div>
+            <div class="chat-body" id="chat-body" aria-live="polite">
+              <div class="welcome-state" id="welcome-state"><div class="shield-icon" aria-hidden="true"><span>+</span></div><p class="welcome-kicker">Welcome to CyberRAG</p><h2>How can I help you?</h2><p>Your AI assistant for cybersecurity knowledge. Ask a question to search the custom knowledge base and generate a context-aware response.</p><div class="example-grid"><button class="example-card" type="button" data-question="What is phishing?"><span class="example-icon">⌁</span><span>What is phishing?</span><span class="example-arrow">↗</span></button><button class="example-card" type="button" data-question="How can I protect against phishing?"><span class="example-icon">◌</span><span>How can I protect against phishing?</span><span class="example-arrow">↗</span></button><button class="example-card" type="button" data-question="What is ransomware?"><span class="example-icon">▣</span><span>What is ransomware?</span><span class="example-arrow">↗</span></button><button class="example-card" type="button" data-question="What is encryption?"><span class="example-icon">◇</span><span>What is encryption?</span><span class="example-arrow">↗</span></button></div></div>
+              <div class="loading-state hidden" id="loading-state"><div class="loading-orbit"><span></span><span></span><span></span></div><strong id="loading-label">Searching knowledge base...</strong><span id="loading-subtext">Retrieving relevant security context</span></div>
+              <div class="conversation hidden" id="conversation"><div class="question-message"><span class="mini-avatar user-avatar">U</span><div><span class="message-label">You asked</span><p id="question-output"></p></div></div><article class="answer-card"><div class="answer-heading"><span class="agent-avatar small">✦</span><div><strong>CyberRAG AI</strong><span>Grounded response</span></div><span class="answer-badge">AI response</span></div><div class="answer-text" id="answer-text"></div><div class="answer-actions"><span id="answer-meta">Retrieved from knowledge base</span><button class="copy-button" id="copy-answer" type="button">Copy answer <span>⌘</span></button></div></article></div>
+              <div class="error-state hidden" id="error-state"><div class="error-icon">!</div><h2 id="error-title">Unable to connect to the RAG service.</h2><p id="error-message">Please make sure the Flask server is running.</p><button class="secondary-button" id="retry-button" type="button">Try again</button></div>
+            </div>
+            <form class="question-form" id="ask-form"><label class="sr-only" for="question">Ask a cybersecurity question</label><textarea id="question" rows="1" placeholder="Ask a cybersecurity question..." required></textarea><div class="input-footer"><span><kbd>Enter</kbd> to send <kbd>Shift</kbd> + <kbd>Enter</kbd> for a new line</span><button class="send-button" id="send-button" type="submit"><span>Send</span><span class="send-icon">↗</span></button></div></form>
+          </section>
+
+          <section class="dashboard-grid">
+            <section class="sources-card glass-card" id="sources"><div class="section-header"><div><p class="eyebrow">Evidence</p><h2>Retrieved Sources</h2></div><span class="result-count" id="source-count">0 sources</span></div><div class="sources-list" id="sources-list"><div class="sources-empty"><span class="evidence-icon">⌁</span><p>Relevant knowledge chunks will appear here after your question.</p></div></div></section>
+            <section class="status-card glass-card" id="status"><div class="section-header"><div><p class="eyebrow">Live telemetry</p><h2>System Status</h2></div><span class="status-pill" id="status-pill"><span class="status-dot"></span>Checking</span></div><div class="status-list"><div class="status-row"><span><i class="status-symbol">⌁</i>RAG Engine</span><strong id="rag-status">Checking</strong></div><div class="status-row"><span><i class="status-symbol">◈</i>Vector Database</span><strong id="vector-status">Checking</strong></div><div class="status-row"><span><i class="status-symbol">▤</i>Knowledge Base</span><strong id="kb-status">Checking</strong></div><div class="status-row"><span><i class="status-symbol">✦</i>AI Generation</span><strong id="generation-status">Ready</strong></div></div><p class="status-footnote" id="health-detail">Checking /health endpoint...</p></section>
+          </section>
+
+          <section class="lower-grid"><section class="pipeline-card glass-card" id="pipeline"><div class="section-header"><div><p class="eyebrow">Behind the answer</p><h2>RAG Pipeline</h2></div><span class="pipeline-label">Live workflow</span></div><div class="pipeline-flow"><div class="pipeline-node"><span>01</span><i>▤</i><strong>Knowledge<br />Base</strong></div><b>→</b><div class="pipeline-node"><span>02</span><i>▦</i><strong>Text<br />Chunking</strong></div><b>→</b><div class="pipeline-node"><span>03</span><i>◌</i><strong>Embeddings</strong></div><b>→</b><div class="pipeline-node"><span>04</span><i>◇</i><strong>FAISS Vector<br />Search</strong></div><b>→</b><div class="pipeline-node"><span>05</span><i>⌁</i><strong>Relevant<br />Context</strong></div><b>→</b><div class="pipeline-node"><span>06</span><i>✦</i><strong>AI<br />Generation</strong></div><b>→</b><div class="pipeline-node final"><span>07</span><i>✓</i><strong>Final<br />Answer</strong></div></div></section><section class="knowledge-card glass-card" id="knowledge"><div class="section-header"><div><p class="eyebrow">Indexed context</p><h2>Cybersecurity Knowledge Base</h2></div><span class="chunk-label" id="chunk-label">Loaded</span></div><p class="knowledge-copy">Curated topics available to ground your answers.</p><div class="topic-list"><span>Cybersecurity Fundamentals</span><span>Phishing</span><span>Password Security</span><span>Malware</span><span>Firewalls</span><span>Encryption</span><span>Social Engineering</span><span>Network Security</span><span>Incident Response</span><span>Authentication</span><span>Best Practices</span></div></section></section>
+          <footer><span>CyberRAG / Cybersecurity Knowledge Assistant</span><span>Secure by context · Built for clarity</span></footer>
+        </div>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

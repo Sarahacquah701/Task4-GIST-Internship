@@ -1,0 +1,9 @@
+{
+  "name": "signal-rag-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A browser-based Retrieval-Augmented Generation assistant demo.",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}
